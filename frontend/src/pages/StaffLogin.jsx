@@ -1,0 +1,74 @@
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "../auth.css";
+import logo from "../images/nw_logo.jpeg";   // ✅ add logo
+
+const API = "http://localhost:4000/api";
+
+function StaffLogin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API}/staff/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("staff", "true"); 
+        navigate("/staff-dashboard");
+      } else {
+        alert(data.msg || "Staff login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Backend not reachable");
+    }
+  };
+
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+
+        {/* ✅ LOGO */}
+        <img src={logo} alt="HumanXCode AI" className="login-logo" />
+
+        <h2>Staff Login</h2>
+        <p className="auth-subtitle">Login to access staff dashboard</p>
+
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+
+        <button onClick={handleLogin}>Login</button>
+
+        <div className="auth-links">
+          <p><Link to="/">← Back to Student Login</Link></p>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+export default StaffLogin;
