@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
-const API = "https://nextwealthxexam.onrender.com/";
+const API = "https://nextwealthxexam.onrender.com/api";
 
 export default function StaffQuestions() {
   const navigate = useNavigate();

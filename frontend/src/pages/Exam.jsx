@@ -9,7 +9,7 @@ import "../App.css";
 import warningSound from "../assets/warning.mp3";
 
 
-const API = "https://nextwealthxexam.onrender.com/";
+const API = "https://nextwealthxexam.onrender.com/api";
 
 export default function Exam() {
   const navigate = useNavigate();

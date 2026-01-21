@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../auth.css";
 import logo from "../images/nw_logo.jpeg";   // ✅ add logo
 
-const API = "https://nextwealthxexam.onrender.com/";
+const API = "https://nextwealthxexam.onrender.com/api";
 
 function StudentLogin() {
   const [email, setEmail] = useState("");
