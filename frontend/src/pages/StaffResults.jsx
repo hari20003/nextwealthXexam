@@ -12,7 +12,7 @@ export default function StaffResults() {
   }, [navigate]);
 
   const loadResults = () => {
-    fetch("http://localhost:4000/api/staff/results")
+    fetch("https://nextwealthxexam.onrender.com/api/staff/results")
       .then(res => res.json())
       .then(data => setResults(Array.isArray(data) ? data : []))
       .catch(err => console.error(err));
@@ -23,13 +23,13 @@ export default function StaffResults() {
   }, []);
 
   const downloadAnswerSheet = (id) => {
-    window.open(`http://localhost:4000/api/staff/download/${id}`, "_blank");
+    window.open(`https://nextwealthxexam.onrender.com/api/staff/download/${id}`, "_blank");
   };
 
   const deleteResult = async (id) => {
     if (!window.confirm("Delete this submission?")) return;
 
-    await fetch(`http://localhost:4000/api/staff/result/${id}`, {
+    await fetch(`https://nextwealthxexam.onrender.com/api/staff/result/${id}`, {
       method: "DELETE"
     });
 

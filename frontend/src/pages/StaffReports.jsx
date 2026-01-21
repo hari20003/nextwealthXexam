@@ -20,7 +20,7 @@ export default function StaffReports() {
   /* ================= LOAD RESULTS ================= */
   const loadResults = async () => {
     try {
-      const res = await fetch("http://localhost:4000/api/staff/results");
+      const res = await fetch("https://nextwealthxexam.onrender.com/api/staff/results");
       const data = await res.json();
       setResults(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -30,12 +30,12 @@ export default function StaffReports() {
 
   /* ================= DOWNLOAD TXT ================= */
   const downloadAnswerSheet = (id) => {
-    window.open(`http://localhost:4000/api/staff/download/${id}`, "_blank");
+    window.open(`https://nextwealthxexam.onrender.com/api/staff/download/${id}`, "_blank");
   };
 
   /* ================= DOWNLOAD EXCEL ================= */
   const downloadExcel = () => {
-    window.open("http://localhost:4000/api/staff/download-excel", "_blank");
+    window.open("https://nextwealthxexam.onrender.com/api/staff/download-excel", "_blank");
   };
 
   /* ================= DELETE ================= */
@@ -43,7 +43,7 @@ export default function StaffReports() {
     if (!window.confirm("Are you sure you want to delete this submission?")) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/api/staff/result/${id}`, {
+      const res = await fetch(`https://nextwealthxexam.onrender.com/api/staff/result/${id}`, {
         method: "DELETE"
       });
 
